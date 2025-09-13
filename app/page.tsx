@@ -252,7 +252,7 @@ export default function RestAreasManager() {
   const highlightText = (text: string, query: string) => {
     if (!query.trim()) return text
 
-    const regex = new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")})`, "gi")
+    const regex = new RegExp(`(${query.replace(/[.*+?^${}()[\]\\]/g, "\\$&")})`, "gi")
     const parts = text.split(regex)
 
     return parts.map((part, index) =>
@@ -330,7 +330,7 @@ export default function RestAreasManager() {
                           className={`flex ${message.type === "user" ? "justify-start" : "justify-end"}`}
                         >
                           <div
-                            className={`max-w-[80%] p-3 rounded-lg ${
+                            className={`max-w-[80%] p-3 rounded-lg ${ 
                               message.type === "user"
                                 ? "bg-blue-600 text-white"
                                 : "bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white"
