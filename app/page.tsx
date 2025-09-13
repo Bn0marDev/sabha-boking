@@ -47,8 +47,7 @@ interface ChatMessage {
 }
 
 const WEBHOOK_URL = "https://n8n.m0usa.ly/webhook/webhook/excel-sync"
-// Use the updated chatbot webhook URL provided by the user
-const CHATBOT_WEBHOOK_URL = "https://n8n.m0usa.ly/webhook/chatbot"
+const CHATBOT_WEBHOOK_URL = "https://n8n.m0usa.ly/webhook/7abe776a-e835-4e76-b1d6-159a05abbd1f"
 const REFRESH_INTERVAL = 30000
 
 export default function RestAreasManager() {
@@ -154,37 +153,12 @@ export default function RestAreasManager() {
         throw new Error(`HTTP ${response.status}`)
       }
 
-      // Normalize the webhook response into plain text before sending to the chat
-      let botText = "عذراً، لم أتمكن من فهم طلبك. حاول مرة أخرى."
-      try {
-        const contentType = response.headers.get("content-type") || ""
-        if (contentType.includes("application/json")) {
-          const parsed = await response.json()
-          if (typeof parsed === "string") {
-            botText = parsed
-          } else if (parsed && (typeof parsed.response === "string" || typeof parsed.message === "string")) {
-            botText = parsed.response || parsed.message
-          } else {
-            // Fallback: stringify complex JSON objects
-            try {
-              botText = JSON.stringify(parsed)
-            } catch (e) {
-              botText = String(parsed)
-            }
-          }
-        } else {
-          // non-JSON responses (plain text)
-          botText = await response.text()
-        }
-      } catch (e) {
-        console.error("Error parsing chatbot webhook response:", e)
-        botText = "عذراً، حدث خطأ في معالجة رد الخادم."
-      }
+      const result = await response.json()
 
       const botMessage: ChatMessage = {
         id: (Date.now() + 1).toString(),
         type: "bot",
-        content: botText,
+        content: result.response || result.message || "عذراً، لم أتمكن من فهم طلبك. حاول مرة أخرى.",
         timestamp: new Date(),
       }
 
@@ -252,7 +226,7 @@ export default function RestAreasManager() {
   const highlightText = (text: string, query: string) => {
     if (!query.trim()) return text
 
-    const regex = new RegExp(`(${query.replace(/[.*+?^${}()[\]\\]/g, "\\$&")})`, "gi")
+    const regex = new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")})`, "gi")
     const parts = text.split(regex)
 
     return parts.map((part, index) =>
@@ -330,7 +304,7 @@ export default function RestAreasManager() {
                           className={`flex ${message.type === "user" ? "justify-start" : "justify-end"}`}
                         >
                           <div
-                            className={`max-w-[80%] p-3 rounded-lg ${ 
+                            className={`max-w-[80%] p-3 rounded-lg ${
                               message.type === "user"
                                 ? "bg-blue-600 text-white"
                                 : "bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white"
