@@ -47,7 +47,7 @@ interface ChatMessage {
 }
 
 const WEBHOOK_URL = "https://n8n.m0usa.ly/webhook/webhook/excel-sync"
-const CHATBOT_WEBHOOK_URL = "https://n8n.m0usa.ly/webhook/7abe776a-e835-4e76-b1d6-159a05abbd1f"
+const CHATBOT_WEBHOOK_URL = "https://n8n.m0usa.ly/webhook/chatbot"
 const REFRESH_INTERVAL = 30000
 
 export default function RestAreasManager() {
