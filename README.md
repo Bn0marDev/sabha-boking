@@ -5,26 +5,31 @@
 [![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/wwwmousa711com-gmailcoms-projects/v0-next-js-ui-with-ocr)
 [![Built with v0](https://img.shields.io/badge/Built%20with-v0.app-black?style=for-the-badge)](https://v0.app/chat/projects/xDFAcC1O2Fc)
 
-## Overview
 
-This repository will stay in sync with your deployed chats on [v0.app](https://v0.app).
-Any changes you make to your deployed app will be automatically pushed to this repository from [v0.app](https://v0.app).
+# منصة سبحة للحجز
 
-## Deployment
+منصة لإدارة الاستراحات والبحث عنها، وتوفير واجهة تفاعلية للمستخدمين مع دعم شات بوت لتلقي الاستفسارات والإجابة عليها.
 
-Your project is live at:
+هدف المنصة
 
-**[https://vercel.com/wwwmousa711com-gmailcoms-projects/v0-next-js-ui-with-ocr](https://vercel.com/wwwmousa711com-gmailcoms-projects/v0-next-js-ui-with-ocr)**
+- تسهيل إدارة بيانات الاستراحات (اسم، عنوان، رقم هاتف، ملاحظات وروابط ذات صلة).
+- تمكين المستخدمين من البحث السريع والتصفية والاطلاع على تفاصيل كل استراحة.
+- توفير واجهة دردشة تسمح بطرح أسئلة واستخدام السياق من بيانات الاستراحات لمساعدة المستخدم.
 
-## Build your app
+التشغيل المحلي
 
-Continue building your app on:
+- ثبت بيئة تطوير Node.js على جهازك.
+- ثبت مدير الحزم pnpm أو استخدم npm حسب تفضيلك.
+- وثائق التشغيل والتعليمات التقنية موجودة ضمن ملفات المشروع.
 
-**[https://v0.app/chat/projects/xDFAcC1O2Fc](https://v0.app/chat/projects/xDFAcC1O2Fc)**
+تكوين الويبهوك للشات بوت
 
-## How It Works
+- عنوان الويبهوك مهيأ داخل الكود في الملف `app/page.tsx` كقيمة المتغير `CHATBOT_WEBHOOK_URL`.
+- يمكن استبدال هذا العنوان مباشرة في الكود أو نقله إلى متغيرات بيئية لتسهيل التبديل بين بيئات التطوير والإنتاج.
 
-1. Create and modify your project using [v0.app](https://v0.app)
-2. Deploy your chats from the v0 interface
-3. Changes are automatically pushed to this repository
-4. Vercel deploys the latest version from this repository
+ملاحظات
+
+- هذا الوصف مكتوب باللغة العربية ويهدف لشرح هدف ووظيفة المشروع دون الإشارة إلى روابط خارجية.
+- راجع ملفات المشروع لمزيد من التفاصيل حول البنية والاعتماديات.
+
+
